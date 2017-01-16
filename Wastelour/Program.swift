@@ -1,3 +1,5 @@
 ﻿import System.Linq
 
-Console.WriteLine("The magic happens here.")
+Console.WriteLine("Now starting...")
+App().run()
+

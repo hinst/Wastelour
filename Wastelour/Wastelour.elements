@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.swift" />
     <Compile Include="Program.swift" />
     <Content Include="App.ico" />
     <Content Include="packages.config">
