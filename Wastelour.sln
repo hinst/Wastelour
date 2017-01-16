@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "Wastelour", "Wastelour\Wastelour.elements", "{389CA6B3-5385-47F0-AF08-68DF8CF84E24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{389CA6B3-5385-47F0-AF08-68DF8CF84E24}.Debug|Default.ActiveCfg = Debug
+		{389CA6B3-5385-47F0-AF08-68DF8CF84E24}.Debug|Default.Build.0 = Debug
+		{389CA6B3-5385-47F0-AF08-68DF8CF84E24}.Release|Default.ActiveCfg = Release
+		{389CA6B3-5385-47F0-AF08-68DF8CF84E24}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
