@@ -1,13 +1,18 @@
 ﻿import System.Dynamic
+import System.Threading
 import Nancy
 
 public class WebUI : NancyModule {
 
-	let requestGroup = System.Threading.Barrier(0)
+	let requestGroup = Barrier(0)
 
-	public func start() {
+	public init() {
 		Get["/test"] = createHandler(test)
-		Get["/stop"] = createHandler(stopReq)
+		Get["/"] = createHandler(test)
+		Get["/stop"] = createHandler(receiveStopRequest)
+	}
+
+	func start() {
 		requestGroup.AddParticipant()
 	}
 
@@ -16,7 +21,7 @@ public class WebUI : NancyModule {
 		return "Test."
 	}
 
-	func stopReq(a: Any) -> Any {
+	func receiveStopRequest(a: Any) -> Any {
 		return ""
 	}
 
@@ -35,8 +40,11 @@ public class WebUI : NancyModule {
 		return result
 	}
 
-	func stop() {
-		requestGroup.SignalAndWait()
+	public func stop() {
+		//requestGroup.RemoveParticipant()
+		while (requestGroup.ParticipantsRemaining > 0) {
+			Thread.Sleep(100)
+		}
 	}
 
 }
