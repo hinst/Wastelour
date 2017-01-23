@@ -9,7 +9,6 @@ namespace Wastelour
 	{
 
 		public TestingModule() {
-			dynamic x = 0;
 			x = 0;
 			Get["/"] = null;
 		}

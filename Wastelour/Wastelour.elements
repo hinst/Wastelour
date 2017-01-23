@@ -88,7 +88,6 @@
   <ItemGroup>
     <Compile Include="App.swift" />
     <Compile Include="Program.swift" />
-    <Compile Include="TestingModule.cs" />
     <Compile Include="WebUI.swift" />
     <Content Include="App.ico" />
     <Content Include="packages.config">
