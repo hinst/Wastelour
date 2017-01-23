@@ -4,14 +4,21 @@ import System.Text
 
 class App {
 
-	var host = Nancy.Hosting.Self.NancyHost(Uri("http://localhost:8080"))
-	var holder = System.Threading.Barrier(0)
-	var webUI = WebUI()
+	let host = Nancy.Hosting.Self.NancyHost(Uri("http://localhost:8080"))
+	let holder = System.Threading.AutoResetEvent(false)
 
 	func run() {
 		host.Start()
+		webUI.stopReceiver = receiveStopRequest
 		webUI.start()
+		holder.WaitOne()
 		webUI.stop()
+		host.Stop()
+	}
+
+	func receiveStopRequest() {
+		print("app.stop")
+		holder.Set()
 	}
 
 }
