@@ -5,15 +5,18 @@ import System.Text
 class App {
 
 	let host = Nancy.Hosting.Self.NancyHost(Uri("http://localhost:8080"))
-	let holder = System.Threading.AutoResetEvent(false)
+	public let holder = System.Threading.AutoResetEvent(false)
+	public class var global: App? = nil
+
+	init() {
+		global = self;
+	}
 
 	func run() {
 		host.Start()
-		webUI.stopReceiver = receiveStopRequest
-		webUI.start()
 		holder.WaitOne()
-		webUI.stop()
 		host.Stop()
+		WebUI.waitForRequests()
 	}
 
 	func receiveStopRequest() {
