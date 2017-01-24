@@ -4,9 +4,6 @@ import Nancy
 
 public class WebUI : NancyModule {
 
-	public var stopReceiver: () -> Void = {}
-	public class let requestGroup = Barrier(1)
-
 	public init() {
 		Get["/test"] = createHandler(test)
 		Get["/stop"] = createHandler(receiveStopRequest)
@@ -38,7 +35,13 @@ public class WebUI : NancyModule {
 		return result
 	}
 
-	public class func waitForRequests() {
+	public class let requestGroup = Barrier(0)
+
+	public class func start() {
+		requestGroup.AddParticipant()
+	}
+
+	public class func stop() {
 		requestGroup.SignalAndWait()
 	}
 

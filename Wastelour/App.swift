@@ -14,9 +14,10 @@ class App {
 
 	func run() {
 		host.Start()
+		WebUI.start()
 		holder.WaitOne()
 		host.Stop()
-		WebUI.waitForRequests()
+		WebUI.stop()
 	}
 
 	func receiveStopRequest() {
