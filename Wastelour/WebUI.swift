@@ -4,6 +4,8 @@ import Nancy
 
 public class WebUI : NancyModule {
 
+	lazy let pager = App.global!.pager;
+
 	public init() {
 		super.init("/waste")
 		Get["/test"] = createHandler(test)
@@ -22,14 +24,14 @@ public class WebUI : NancyModule {
 		return "Stop"
 	}
 
-	func createHandler(_ originalFunction: (Any) -> Any) -> Func<Any, Any> {
+	func createHandler(_ originalFunction: (DynamicDictionary) -> Any) -> Func<Any, Any> {
 		func result(a: Any) -> Any {
-			var r: Any = "unset"
+			var r: Any = "No result"
 			requestGroup.AddParticipant()
 			do {
 				try r = originalFunction(a)
 			} catch System.Exception {
-				print(error)
+				Console.WriteLine(error)
 			}
 			requestGroup.RemoveParticipant()
 			return r
@@ -47,8 +49,10 @@ public class WebUI : NancyModule {
 		requestGroup.SignalAndWait()
 	}
 
-	func getPage(a: Any) -> Any {
-		return ""
+	func getPage(a: DynamicDictionary) -> Any {
+		let pageName: String = a["name"].ToString()
+		Console.WriteLine(pageName)
+		return pager.getPage(pageName)
 	}
 
 }

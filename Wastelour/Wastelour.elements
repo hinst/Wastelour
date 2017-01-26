@@ -98,6 +98,9 @@
     <Content Include="packages.config">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="page\main.html">
+      <SubType>Form</SubType>
+    </Content>
     <Content Include="page\page.html">
       <SubType>Form</SubType>
     </Content>
