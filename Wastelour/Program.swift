@@ -1,3 +1,3 @@
-﻿Console.WriteLine("Now starting...")
+﻿Console.WriteLine("START")
 App().run()
-
+Console.WriteLine("END")

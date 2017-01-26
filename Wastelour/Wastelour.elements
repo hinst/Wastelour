@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.swift" />
+    <Compile Include="Pager.swift" />
     <Compile Include="Program.swift" />
     <Compile Include="WebUI.swift" />
     <Content Include="App.ico" />

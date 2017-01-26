@@ -5,8 +5,10 @@ import Nancy
 public class WebUI : NancyModule {
 
 	public init() {
+		super.init("/waste")
 		Get["/test"] = createHandler(test)
 		Get["/stop"] = createHandler(receiveStopRequest)
+		Get["/page"] = createHandler(getPage)
 	}
 
 	func test(a: Any) -> Any {
@@ -43,6 +45,10 @@ public class WebUI : NancyModule {
 
 	public class func stop() {
 		requestGroup.SignalAndWait()
+	}
+
+	func getPage(a: Any) -> Any {
+		return ""
 	}
 
 }
