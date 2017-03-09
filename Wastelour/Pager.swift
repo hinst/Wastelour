@@ -2,7 +2,7 @@
 
 public class Pager {
 	
-	var path = "";
+	var path = ""
 
 	func getPageList() -> Dictionary<String, String> {
 		let result = Dictionary<String, String>()

@@ -93,6 +93,7 @@
     <Compile Include="App.swift" />
     <Compile Include="Pager.swift" />
     <Compile Include="Program.swift" />
+    <Compile Include="RequestGroup.swift" />
     <Compile Include="WebUI.swift" />
     <Content Include="App.ico" />
     <Content Include="packages.config">

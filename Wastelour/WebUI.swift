@@ -1,6 +1,7 @@
 ﻿import System.Dynamic
 import System.Threading
 import Nancy
+import System.Collections.Concurrent
 
 public class WebUI : NancyModule {
 
@@ -27,26 +28,27 @@ public class WebUI : NancyModule {
 	func createHandler(_ originalFunction: (DynamicDictionary) -> Any) -> Func<Any, Any> {
 		func result(a: Any) -> Any {
 			var r: Any = "No result"
-			requestGroup.AddParticipant()
+			requestGroup.add()
 			do {
 				try r = originalFunction(a)
 			} catch System.Exception {
 				Console.WriteLine(error)
 			}
-			requestGroup.RemoveParticipant()
+			requestGroup.remove()
 			return r
 		}
 		return result
 	}
 
-	public class let requestGroup = Barrier(0)
+	class let requestGroup = RequestGroup()
 
 	public class func start() {
-		requestGroup.AddParticipant()
+		requestGroup.add()
 	}
 
 	public class func stop() {
-		requestGroup.SignalAndWait()
+		requestGroup.remove()
+		requestGroup.wait()
 	}
 
 	func getPage(a: DynamicDictionary) -> Any {
